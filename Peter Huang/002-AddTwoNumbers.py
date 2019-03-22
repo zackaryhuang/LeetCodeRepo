@@ -1,31 +1,1 @@
-calss ListNode:
-	def __init__(self, x):
-		self.var = x
-		self.next = None
-
-def add_two_numbers(linked_list_01,linked_list_02):
-	res = []
-	if linked_list_01.var + linked_list_02.var >= 10:
-		linked_list_01.next.var += 1
-		res.append(linked_list_01.var + linked_list_02.var - 10)
-	else:
-		res.var = linked_list_01.var + linked_list_02.var
-	while linked_list_01.next != None:
-		if linked_list_01.next.var + linked_list_02.next.var >= 10:
-			linked_list_01.next.next.var +=1
-			linked_list_01.next = linked_list_01.next.next
-			linked_list_02.next = linked_list_02.next.next
-			res.append(linked_list_01.var + linked_list_02.var - 10)
-		else:
-			res.append(linked_list_01.var + linked_list_02.var)
-			linked_list_01 = linked_list_01.next
-			linked_list_02 = linked_list_02.next
-	return res
-
-def change_list_into_linkedlist(list):
-	linked_list = ListNode()
-	
-
-def mian(list_01,list_02):
-	linked_list_01 = ListNode()
-	add_two_numbers()
+# class Solution(object):#     def twoSum(self, nums, target):#         """#         :type nums: List[int]#         :type target: int#         :rtype: List[int]#         """#     index_01 = 0#     index_02 = 0#     for i in range(0,len(nums)):#         if target - nums[i] in nums and i != nums.index(nums[i]):#             index_01 = nums.index(nums[i])#             index_02 = nums.index(target - nums[i])#             return [index_01,index_02]# def main():#     solution = Solution()#     res = solution.twoSum([3,2,4],6)#     print(res)# if __name__ == '__main__':#     main()class Solution(object):    def twoSum(self, nums, target):        index_01 = 0        index_02 = 0        for i in range(0,len(nums)):            temp = nums            if target - nums[i] in temp.pop(i):                index_01 = i                index_02 = temp.index(target - nums[i]) + 1                return[index_01,index_02]def main():    solution = Solution()    res = solution.twoSum([3,3],6)    print(res)if __name__ == '__main__':    main()

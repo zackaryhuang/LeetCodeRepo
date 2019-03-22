@@ -17,12 +17,15 @@ def two_sum(num_list,target):
 	index_02 = 0
 	for i in num_list:
 		if target - i in num_list:
-			index_01 = num_list.index(i)
-			index_02 = num_list.index(target - i)
-			return [index_01,index_02]
+			if target - i == i:
+				continue
+			else:
+				index_01 = num_list.index(i)
+				index_02 = num_list.index(target - i)
+				return [index_01,index_02]
 
 def main():
-	res = two_sum([1,3,5,9,16],25)
+	res = two_sum([3,3],6)
 	print(res)
 
 if __name__ == '__main__':
