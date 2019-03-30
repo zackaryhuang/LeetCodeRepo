@@ -14,3 +14,5 @@ class Solution(object):
             return 1
         else:
             return 0
+        
+        #return str(x)==str(x)[::-1]
