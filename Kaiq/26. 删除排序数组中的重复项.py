@@ -1,7 +1,6 @@
 """
-给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
-
-你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换
+执行用时 : 152 ms, 在Remove Duplicates from Sorted Array的Python提交中击败了21.94% 的用户
+内存消耗 : 13.6 MB, 在Remove Duplicates from Sorted Array的Python提交中击败了0.73% 的用户
 
 双指针法
 """
