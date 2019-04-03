@@ -14,3 +14,17 @@ public:
         return 0;
     }
 };
+
+%%%%%%%%%%%% python version %%%%%%%%%%%%
+class Solution(object):
+    def repeatedNTimes(self, A):
+        """
+        :type A: List[int]
+        :rtype: int
+        """
+        s = set()
+        for a in A:
+            l = len(s)
+            s.add(a)
+            if(len(s) == l):
+                return a
