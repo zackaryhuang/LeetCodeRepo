@@ -6,3 +6,5 @@
 把代码导出成图片，贴在你的PPT里B格满满
 
 <div align = center> <img src = 'https://github.com/Peter-Huang0623/LeetCodeRepo/blob/master/Peter_Huang/Pics/code.png' width='70%' height='70%'> </div>
+
+<a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg" alt="996.icu" /></a>
