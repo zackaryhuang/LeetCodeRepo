@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int repeatedNTimes(vector<int>& A) {
+        const int N = A.size() / 2;
+        unordered_map<int, int> m;
+        for (int a : A) {
+            m[a] ++;
+        }
+        for (auto x : m) {
+            if (x.second == N) {
+                return x.first;
+            }
+        }
+        return 0;
+    }
+};
+
+%%%%%%%%%%%% python version %%%%%%%%%%%%
+class Solution(object):
+    def repeatedNTimes(self, A):
+        """
+        :type A: List[int]
+        :rtype: int
+        """
+        s = set()
+        for a in A:
+            l = len(s)
+            s.add(a)
+            if(len(s) == l):
+                return a
