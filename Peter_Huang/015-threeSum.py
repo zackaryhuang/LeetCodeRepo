@@ -9,7 +9,7 @@ class Solution(object):
         res = []
         for i in range(len(nums)):
             if i == 0 or nums[i] > nums[i-1]:
-                left = i+1;
+                left = i+1
                 right = len(nums)-1
                 while left < right:
                     sum = nums[i] + nums[left] + nums[right]
