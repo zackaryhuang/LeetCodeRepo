@@ -1,0 +1,48 @@
+#分治法  20ms
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        if(strs.empty()) 
+            return "";
+        else if(strs.size()==1) 
+            return strs[0];
+        else{
+            int half =  strs.size()/2;
+            vector<string> fronthalf(strs.begin(),strs.begin()+half);
+            vector<string> endhalf(strs.begin()+half,strs.end());
+            string front = longestCommonPrefix(fronthalf);
+            string back = longestCommonPrefix(endhalf);
+            string res="";
+            for(int i=0;i<min(front.size(),back.size());i++){
+                    if(front[i]!=back[i])
+                        break;
+                 res+=front[i];
+            }
+            return res;
+        }
+    }
+
+};
+
+
+
+##常规 12ms
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        int n=strs.size();
+        if(n==0 || strs[0]=="") return "";
+        string max = strs[0];
+        if(n==1) return max;
+        int max_n = max.size();
+        for(int i=1;i<n;i++){
+            while(max.substr(0,max_n) != strs[i].substr(0,max_n)){
+                    max_n--;
+            }
+        }
+        if(max_n>0)
+            return max.substr(0,max_n);
+        else
+            return "";
+    }
+};

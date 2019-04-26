@@ -1,0 +1,75 @@
+#暴力递归 大量重复路径 超时
+class Solution {
+public:
+    int climbStairs(int n) {
+        if(n==1)
+            return 1;
+        if(n==2)
+            return 2;
+        return climbStairs(n-1)+climbStairs(n-2);
+        
+    }
+};
+
+#备忘录法 去除重复路径  4ms
+class Solution {
+public:
+    map<int,int> _map;
+    int Value;
+    int climbStairs(int n) {
+        if(n==1)return 1;
+        if(n==2)return 2;
+        if(_map.find(n)!=_map.end()){
+            return _map[n];
+        }
+        else
+            Value=climbStairs(n-1)+climbStairs(n-2);
+            _map[n]=Value;
+            return Value;
+    }    
+};
+
+
+##dp1   8ms
+class Solution {
+public:
+    int climbStairs(int n) {
+        if(n==1 || n==2) return n;
+        int a=1;
+        int b=2;
+        int temp=0;
+        for(int i=3;i<=n;i++){
+            temp=a+b;
+            a=b;
+            b=temp;
+        }
+        return temp;
+    }    
+};
+
+
+
+##dp2  4ms  
+class Solution {
+public:
+    int climbStairs(int n) {
+        vector<int> dp(n+1,1);
+        if(n==1 || n==2) return n;
+        dp[2]=2;
+        for(int i=3;i<=n;i++)
+            dp[i]=dp[i-1]+dp[i-2];
+        return dp[n];
+    } 
+};
+
+##终极dp  4ms
+
+class Solution {
+public:
+    int climbStairs(int n) {
+        vector<int> dp(n+1,1);
+        for(int i=2;i<=n;i++)
+            dp[i]=dp[i-1]+dp[i-2];
+        return dp[n];
+    } 
+};

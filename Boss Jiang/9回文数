@@ -1,0 +1,22 @@
+##44ms#
+
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        int temp=0;
+        unsigned long long value=0;
+        int a=x;
+        if(x<0){
+            return false;
+        }
+        else{
+            while(x>0){
+                temp=x%10;
+                value = value*10 + temp;
+                x/=10;
+            }
+            if(value==a) return true;
+            else return false;     
+        }
+    }
+};

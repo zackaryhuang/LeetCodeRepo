@@ -1,0 +1,47 @@
+###
+#执行用时 : 20 ms, 在ZigZag Conversion的C++提交中击败了99.21% 的用户
+#内存消耗 : 10.1 MB, 在ZigZag Conversion的C++提交中击败了96.16% 的用户
+####
+#https://www.cnblogs.com/ariel-dreamland/p/8690523.html
+
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        string str="";
+        int n = s.size();
+        int p;
+        if(n<=numRows || numRows==1) return s;
+        for(int i=0;i<numRows;i++){
+            p=i;
+            while(p<n){
+                str+=s[p];
+                if(i!=0 && i!=numRows-1 &&  p+numRows*2-2-i*2<n)
+                    str+=s[p+numRows*2-2-i*2];
+                p+=numRows*2-2;
+            }   
+        }
+        return str;
+    }
+};
+
+##
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        string str="";
+        int n = s.size();
+        if(numRows==1) return s;
+        
+        int Step = 2 *numRows -2;
+        
+        for(int i =0 ; i < numRows;i++)
+            for(int j=i; j<n;j+=Step){
+                str+=s[j];
+                if(i!=0 && i!=numRows-1 && j + Step -2*i < n)
+                    str+=s[j+Step-2*i];
+            }
+        return str;
+    }
+};
+
+

@@ -1,0 +1,31 @@
+#ตÝน้ out of time
+#https://cloud.tencent.com/developer/article/1351839
+class Solution {
+public:
+    bool isMatch(string s, string p) {
+        if(s=="" && p=="") return true;
+        if(s=="" || p=="") return false;
+        if(s.size()>=1 && p.size()<1) return false;
+        int i=0;
+        int j=0;
+        return match(s,i,p,j);
+    }
+    bool match(string s,int i,string p,int j){
+        if(i>=s.size() && j>=p.size()) return true;
+        if(i<s.size() && j>=p.size()) return false;
+        if(p[j+1]!='*' && j+1<=p.size() || p.size()==j+1){
+            if(i<s.size() && (s[i]==p[j] || p[j]=='.') )
+                return match(s,i+1,p,j+1);
+            else 
+                return false;
+        }
+        else{
+            if((i<s.size() && s[i]!=p[j] && p[j]!='.' ) || i ==s.size()){
+                return match(s,i,p,j+2);
+            }
+            else{
+                return match(s,i,p,j+2) || match(s,i+1,p,j)||match(s,i+1,p,j+2);    
+            }
+        }
+    } 
+};
