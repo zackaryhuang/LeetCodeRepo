@@ -1,0 +1,27 @@
+#执行用时 : 24 ms, 在Container With Most Water的C++提交中击败了95.70% 的用户
+#内存消耗 : 9.5 MB, 在Container With Most Water的C++提交中击败了98.02% 的用户
+
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int s=height.size();
+        int start=0;
+        int end = s-1;
+        int max=0;
+        int h;
+        while(start<end){
+            int len = end-start;
+            if(height[end] < height[start]){
+                h =height[end];
+                end--;
+            }
+            else{
+                h=height[start];
+                start++;
+            }
+            int area=h*len;
+            max = (area>max)?area:max;
+        }
+        return max;
+    }
+};

@@ -1,0 +1,20 @@
+#20ms  »ØËÝ·¨
+
+class Solution {
+public:
+    vector<string> res;
+    vector<string> generateParenthesis(int n){
+        dfs("",0,0,n);
+        return res;
+    }
+    void dfs(string combination,int open,int close,int max){
+        if(combination.size()==max*2){
+            res.push_back(combination);
+            return ; 
+        }
+        if(open<max)
+            dfs(combination+'(',open+1,close,max);
+        if(close<open)
+            dfs(combination+')',open,close+1,max);
+    }
+};

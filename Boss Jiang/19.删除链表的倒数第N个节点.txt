@@ -1,0 +1,43 @@
+#20ms
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode *p=head;
+        ListNode *phead = new ListNode(-1);
+        phead->next=head;
+        ListNode *q;
+        ListNode *prev=phead;
+        for(int i=0;i<n;i++)
+            p=p->next;
+        q=p;
+        p=head;
+        while(q!=NULL){
+            q=q->next;
+            prev=p;
+            p=p->next;
+        }
+        prev->next=p->next;
+        return phead->next;
+    }
+};
+
+#12ms
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        if(head==nullptr || n==0) return head;
+        ListNode *fast=head;
+        ListNode *slow=head;
+        
+        while(n--){
+            fast=fast->next;
+        }
+        if(fast==nullptr)return head->next;
+        while(fast->next){
+            fast=fast->next;
+            slow=slow->next;
+        }
+        slow->next=slow->next->next;
+        return head;
+    }
+};

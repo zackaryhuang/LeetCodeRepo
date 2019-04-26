@@ -1,0 +1,25 @@
+####12ms
+#https://blog.csdn.net/biezhihua/article/details/79771424
+
+class Solution {
+public:
+    int myAtoi(string str) {
+        if(str=="") return 0;
+        int Value=0;
+        int SpaceNum=0;
+        while(str[SpaceNum]==' '){
+            SpaceNum++;
+        }
+        int Sign=1;
+        if(str[SpaceNum]=='-' || str[SpaceNum]=='+'){
+            Sign=(str[SpaceNum++]=='-'?-1:1);
+        }
+        int i =SpaceNum;
+        while(i<str.size() && str[i]>='0'&& str[i]<='9'){
+            if(Value>INT_MAX/10 ||(Value==INT_MAX/10 && str[i]-'0'>7))
+               return (Sign==1)?INT_MAX:INT_MIN;
+            Value=Value*10 + (str[i++] - '0');
+        }
+        return Sign*Value;
+    }
+};

@@ -1,0 +1,29 @@
+class Solution {
+#44ms  
+
+public:
+    int romanToInt(string s) {
+        map<char, int> romMap;
+        romMap['M'] = 1000;
+        romMap['D'] = 500;
+        romMap['C'] = 100;
+        romMap['L'] = 50;
+        romMap['X'] = 10;
+        romMap['V'] = 5;
+        romMap['I'] = 1;
+        int res=0;
+        int i=0;
+        while(i<s.size()){
+            if(romMap[s[i]]<romMap[s[i+1]]){
+                res+=romMap[s[i+1]]-romMap[s[i]];
+                i+=2;
+            }
+            else{
+                res+=romMap[s[i]];
+                i++;
+            }
+            
+        }
+        return res;
+    }
+};

@@ -1,0 +1,72 @@
+
+###16ms
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        ListNode *phead=new ListNode(-1);
+        ListNode *cur = phead;
+        ListNode *l1head=l1;
+        ListNode *l2head=l2;
+        while(l1head!=nullptr && l2head!=nullptr)
+            if(l1head->val<l2head->val){
+                cur->next = new ListNode(l1head->val);
+                cur=cur->next;
+                l1head=l1head->next;
+            }
+            else{
+                cur->next = new ListNode(l2head->val);
+                cur=cur->next;
+                l2head=l2head->next;
+            }
+        while(l1head!=nullptr){
+            cur->next = new ListNode(l1head->val);
+            cur=cur->next;
+            l1head=l1head->next;
+        }
+               
+        while(l2head!=nullptr){
+            cur->next = new ListNode(l2head->val);
+            cur=cur->next;
+            l2head=l2head->next;
+        }
+        return phead->next;  
+    }
+};
+
+//进一步优化版本
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        ListNode *phead=new ListNode(-1);
+        ListNode *cur = phead;
+        ListNode *l1head=l1;
+        ListNode *l2head=l2;
+        while(l1head!=nullptr && l2head!=nullptr)
+            if(l1head->val<l2head->val){
+                cur->next = new ListNode(l1head->val);
+                cur=cur->next;
+                l1head=l1head->next;
+            }
+            else{
+                cur->next = new ListNode(l2head->val);
+                cur=cur->next;
+                l2head=l2head->next;
+            }
+        if(l1head!=nullptr){
+            cur->next =l1head;
+        }
+               
+        if(l2head!=nullptr){
+            cur->next =l2head;
+        }
+        return phead->next;  
+    }
+};

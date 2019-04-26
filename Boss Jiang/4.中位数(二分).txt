@@ -1,0 +1,50 @@
+### 题目要求Olog(m+1)###
+
+###我的m+n
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        vector<float> all;
+        int i=0;
+        int size1=nums1.size();
+        int size2=nums2.size();
+        int s1=0,s2=0;
+        int mid=0;
+        while(s1<size1 && s2<size2){
+            if(nums1[s1]<nums2[s2]){
+                all.push_back(nums1[s1]);
+                s1++;
+            }
+            else{
+                all.push_back(nums2[s2]);
+                s2++;
+            }
+        }
+        while(s1<size1){
+                all.push_back(nums1[s1]);
+                s1++;
+        }
+        while(s2<size2){
+                all.push_back(nums2[s2]);
+                s2++;
+        }
+        int a=all.size();
+        if(a%2==0){
+            s1=a/2-1;
+            s2=a/2;
+            double mid = double((all[s1]+all[s2])/2);
+            return mid;
+        }
+        else{
+            float mid = all[(a-1)/2];
+            return mid;
+        }
+        return mid;
+    }
+};
+
+#最佳解法
+
+
+
+##
