@@ -22,6 +22,6 @@ class Solution(object):
 
 if __name__ == '__main__':
     s = Solution()
-    res = s.generate(5)
+    res = s.generate(10)
     print(res)
 
