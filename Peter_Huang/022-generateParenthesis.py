@@ -1,41 +1,43 @@
 import itertools
+import copy
 class Solution:
     def generateParenthesis(self, n):
-        if n == 0:
-            return ['']
-        elif n == 1:
-            return ['()']
-        resStr = ''
-        resList = []
-        d = []
-        for i in range(0, n):
-            d.append(i)
-        # for i in range(0, n):
-        d = itertools.product(d, repeat=n)
-        print('d:', d)
-        for item in d:
-            print(item)
-            for i in item:
-                resStr = self.insertParenthesis(i, resStr)
-            if resStr in resList:
-                resStr = ''
-                continue
+        l = list(itertools.product(['(', ')'], repeat=n * 2))
+        tem = []
+        for i in l:
+            tem.append(list(i))
+        ress = []
+        for i in tem:
+            temp = copy.copy(i)
+            if self.isValid(i) == True:
+                str = ''
+                for s in temp:
+                    str += s
+                ress.append(str)
             else:
-                resList.append(resStr)
-                resStr = ''
-        return resList   
+                continue
+        return ress
+        # if self.isValid(['(', '(', '(', ')', ')', '(']):
+        #     return True
+        # else:
+        #     return False
 
-    def insertParenthesis(self, index, parenthesisStr):
-        if index == 0:
-            return parenthesisStr + '()'
-        elif index == 1:
-            return '(' + parenthesisStr + ')'
+    def isValid(self, t):
+        if len(t) == 0:
+            return True
+        if t[0] == ')':
+            return False
         else:
-            return '()' + parenthesisStr
+            t.pop(0)
+            for i in range(len(t)):
+                if t[i] == ')':
+                    t.pop(i)
+                    return self.isValid(t)
+                else:
+                    continue
+
+
 if __name__ == "__main__":
     s = Solution()
-    res = s.generateParenthesis(4)
-    for item in ["(((())))","((()()))","((())())","((()))()","(()(()))","(()()())","(()())()","(())(())","(())()()","()((()))","()(()())","()(())()","()()(())","()()()()"]:
-        if item not in res:
-            print(item)
+    res = s.generateParenthesis(3)
     print(res)
