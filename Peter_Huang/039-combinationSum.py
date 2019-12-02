@@ -1,19 +1,28 @@
+import copy
 class Solution(object):
     def combinationSum(self, candidates, target):
+        size = len(candidates)
+        if size == 0:
+            return []
+        candidates.sort()
+        path = []
         res = []
-        return self.iteration(candidates, target, res)
-
-    def iteration(self, candidates, target, res):
-        for num in candidates:
-            if target == num:
-                res.append(num)
-                res.append(',')
-            elif target < 0:
-                return []
-            else:
-                res.append(num)
-                self.iteration(candidates, target - num, res)
+        self.iteration(candidates, target, path, 0, res, size)
         return res
+
+    def iteration(self, candidates, target, path, beigin, res, size):
+        if target == 0:
+            res.append(copy.copy(path))
+        for index in range(beigin, size):
+            rest = target - candidates[index]
+            if rest < 0:
+                break
+            else:
+                path.append(candidates[index])
+                self.iteration(candidates, rest, path, index, res, size)
+                path.pop()
+        
+
 
 
 if __name__ == "__main__":
