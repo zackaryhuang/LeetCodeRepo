@@ -5,7 +5,7 @@ class Solution(object):
         :type n: int
         :rtype: float
         """
-        if n > 2 ** 31 -1 or n < 2 ** 31:
+        if n > 2 ** 31 -1 or n < -2 ** 31:
             return 0.0
         if n == 0:
             return 1
