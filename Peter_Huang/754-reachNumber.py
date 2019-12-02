@@ -4,7 +4,6 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
-        res = 0
         step = 1
         s = [0]
         while True:
