@@ -19,6 +19,8 @@ class Solution(object):
         # return []
         x = int((tomatoSlices - cheeseSlices * 2) / 2)
         y = int((4 * cheeseSlices - tomatoSlices) / 2)
+        if x < 0 or y < 0:
+            return []
         if (4 * x + 2 * y == tomatoSlices) and (x + y == cheeseSlices):
             return [x,y]
         return []
