@@ -5,7 +5,6 @@ class Solution(object):
         :rtype: int
         """
         words = sorted(words, key=len, reverse=True)
-        print(words)
         makes = []
         for word in words:
             m = 0
